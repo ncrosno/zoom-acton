@@ -1,0 +1,9 @@
+database:
+  adapter: mysql2              
+  host: localhost                          
+  port: 3306                          
+  database: fixme
+  username: fixme
+  password: fixme              
+
+api_salt: changeme_to_something_random              
