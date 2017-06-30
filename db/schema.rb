@@ -26,6 +26,9 @@ ActiveRecord::Schema.define(version: 20170629024931) do
   create_table "webinars", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "webinar_id"
     t.string "campaign_id"
+    t.string "host_id"
+    t.index ["campaign_id"], name: "index_webinars_on_campaign_id", unique: true
+    t.index ["webinar_id"], name: "index_webinars_on_webinar_id", unique: true
   end
 
 end

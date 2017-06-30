@@ -1,5 +1,7 @@
 require './server'
 require 'sinatra/activerecord/rake'
+require './lib/zoom_api'
+
 
 task :create_user do
   email = ''
@@ -21,4 +23,9 @@ task :get_key do
 
   u = ApiUser.find_by(email: email)
   puts u ? u.api_key : "User not found"
+end
+
+
+task :sync_webinars do
+  ZoomApi.new.sync_all_webinars_to_acton
 end

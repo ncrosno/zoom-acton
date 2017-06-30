@@ -1,5 +1,7 @@
 require 'sinatra'  
 require "sinatra/activerecord"
+require "faraday"
+
 require './config/environments'
 require './models/api_user'
 require './models/webinar'
@@ -75,6 +77,7 @@ def authenticate
   end
   return true
 end
+
 
 def set_campaign(w)
   w.campaign_id = params["campaign_id"]

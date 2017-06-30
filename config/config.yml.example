@@ -7,3 +7,9 @@ database:
   password: fixme              
 
 api_salt: changeme_to_something_random              
+
+# Get creds from https://zoom.us/developer/api/credential
+zoom_api:
+  host: 'https://api.zoom.us'
+  api_key: 'change-to-your-api-key'
+  api_secret: 'change-to-your-api-secret'   
