@@ -9,5 +9,12 @@ database:
 # Get creds from https://zoom.us/developer/api/credential
 zoom_api:
   host: 'https://api.zoom.us'
-  api_key: 'change-to-your-api-key'
-  api_secret: 'change-to-your-api-secret'   
+  api_key: fixme
+  api_secret: fixme   
+
+act_on_api:
+  host: 'https://restapi.actonsoftware.com'
+  client_id: fixme
+  client_secret: fixme 
+  username: fixme
+  password: fixme

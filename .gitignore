@@ -1,2 +1,4 @@
+*.log
 config/config.yml
 Gemfile.lock
+tmp

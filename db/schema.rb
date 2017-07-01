@@ -10,13 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170629024931) do
+ActiveRecord::Schema.define(version: 20170701000553) do
 
   create_table "api_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "api_key"
     t.string "email"
     t.index ["api_key"], name: "index_api_users_on_api_key", unique: true
     t.index ["email"], name: "index_api_users_on_email", unique: true
+  end
+
+  create_table "settings", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.string "key"
+    t.string "val"
+    t.index ["key"], name: "index_settings_on_key", unique: true
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

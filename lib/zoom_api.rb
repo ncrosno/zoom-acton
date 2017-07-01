@@ -1,5 +1,7 @@
 class ZoomApi
 
+  include Logging
+
   def initialize 
     @conn = Faraday.new(:url => CONFIG["zoom_api"]["host"]) do |faraday|
       faraday.request  :url_encoded             # form-encode POST params
@@ -16,7 +18,7 @@ class ZoomApi
 
     # Now loop through all the webinars and sync their data to ActOn 
     Webinar.where('host_id is not null and campaign_id is not null').each do |w|
-      puts "Webinar: #{w.webinar_id} / #{w.campaign_id}"
+      logger.debug "Webinar: #{w.webinar_id} / #{w.campaign_id}"
       sync_webinar_to_acton(w)
     end
   end
@@ -33,7 +35,7 @@ class ZoomApi
     webinar_users.each do |u|
       webinar_data = list_webinars(u["id"])
       webinars = webinar_data["webinars"]
-      puts "----\n #{u["email"]}: found #{webinars.length} \n"
+      logger.debug "#{u["email"]}: found #{webinars.length}"
       
       webinars.each do |zw|
         w = Webinar.find_or_initialize_by(webinar_id: zw["id"])
@@ -48,7 +50,7 @@ class ZoomApi
   def sync_webinar_to_acton(w)
     users = get_users_for_webinar(w)
 
-    puts "Found #{users.length} to sync."
+    logger.debug "Found #{users.length} to sync."
     return unless users.length > 0
 
     ActOnApi.new.sync_webinar(w,users)
@@ -57,7 +59,7 @@ class ZoomApi
 
 
   def get_users_for_webinar(w)
-    puts "Getting users for webinar..."
+    logger.debug "Getting users for webinar..."
     attendees = []
     page_count = 1
     page_num = 1

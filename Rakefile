@@ -1,6 +1,8 @@
-require './server'
 require 'sinatra/activerecord/rake'
+
+require './server'
 require './lib/zoom_api'
+require './lib/act_on_api'
 
 
 task :create_user do
