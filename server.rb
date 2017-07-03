@@ -1,18 +1,8 @@
 require 'sinatra'  
 require "sinatra/activerecord"
-require "faraday"
-
-require "./lib/logging"
-Logging.log_destination = 'app.log'
 
 require './config/environments'
-require './models/api_user'
-require './models/setting'
-require './models/webinar'
 
-
-logger = Logger.new('app.log')
-logger.level = Logger::DEBUG
 
 
 set :run, true

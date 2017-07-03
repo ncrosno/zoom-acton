@@ -75,9 +75,9 @@ class ZoomApi
     while page_num <= page_count
       resp = sendRequest('/v1/webinar/registration', data)
       page_num += 1
-      page_count = resp["page_count"]
+      page_count = resp["page_count"] || 0
       data[:page_number] = page_num
-      attendees += resp["attendees"]
+      attendees += resp["attendees"] if resp["attendees"]
     end
 
     return attendees

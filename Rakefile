@@ -1,6 +1,6 @@
 require 'sinatra/activerecord/rake'
 
-require './server'
+require './config/environments'
 require './lib/zoom_api'
 require './lib/act_on_api'
 
