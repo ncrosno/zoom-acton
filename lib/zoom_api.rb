@@ -35,8 +35,10 @@ class ZoomApi
     webinar_users.each do |u|
       webinar_data = list_webinars(u["id"])
       webinars = webinar_data["webinars"]
-      logger.debug "#{u["email"]}: found #{webinars.length}"
-      
+      cnt = webinars ? webinars.length : 0
+      logger.debug "#{u["email"]}: found #{cnt}"
+      next unless cnt > 0
+
       webinars.each do |zw|
         w = Webinar.find_or_initialize_by(webinar_id: zw["id"])
         w.host_id = u["id"]
