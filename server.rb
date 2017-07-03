@@ -14,6 +14,10 @@ require './models/webinar'
 logger = Logger.new('app.log')
 logger.level = Logger::DEBUG
 
+
+set :run, true
+set :bind, '0.0.0.0'
+
 get '/' do  
   erb :index
 end
