@@ -2,7 +2,8 @@
 class Setting < ActiveRecord::Base
 
   def self.get(k)
-    Setting.find_by(key: k).val
+    s = Setting.find_by(key: k)
+    return s ? s.val : nil
   end
 
   def self.set(k, v)

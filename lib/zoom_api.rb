@@ -20,6 +20,7 @@ class ZoomApi
     Webinar.where('host_id is not null and campaign_id is not null').each do |w|
       logger.debug "Webinar: #{w.webinar_id} / #{w.campaign_id}"
       sync_webinar_to_acton(w)
+      sleep 60 # To help with throttling
     end
   end
 
